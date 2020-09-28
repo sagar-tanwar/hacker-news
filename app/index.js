@@ -5,9 +5,10 @@ import './index.css'
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>Hello Everyone!</h1>
-      </div>
+        <p>How you doin?</p>
+      </React.Fragment>
     )
   }
 }
