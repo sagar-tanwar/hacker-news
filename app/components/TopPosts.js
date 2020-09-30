@@ -1,6 +1,6 @@
 import React from 'react'
 import Post from './post'
-import { getTopPosts } from '../utils/api'
+import { fetchTopStories } from '../utils/api'
 
 export default class TopPosts extends React.Component {
 
@@ -9,33 +9,37 @@ export default class TopPosts extends React.Component {
   }
 
   componentDidMount() {
-    getTopPosts()
-    .then((posts) => {
-      this.setState({posts})
-    })
+    fetchTopStories()
+      .then((posts) => {
+        this.setState({posts})
+      })
   }
 
   render() {
+    
+    const {posts} = this.state
+
     return (
       <div className="container">
-        {this.state.posts === false
+        {posts === false
           ? <div>Loading</div>
-          : JSON.stringify(this.state.posts, null, 2)
+          : (
+            <ul>
+              {posts.map((post) => (
+                <li key={post.id}>
+                  <Post 
+                    id={post.id}
+                    title={post.title}
+                    author={post.by} 
+                    url={post.url}
+                    comments={post.kids ? post.kids.length : 0}
+                    created={post.time} />
+                </li>
+              ))}
+            </ul>
+          )
         }
       </div>
     )
   }
 }
-
-{/* <ul>
-            {posts.map((post) => {
-              <li key={post.id}>
-                <Post 
-                  id={post.id}
-                  title={post.title}
-                  author={post.by} 
-                  url={post.url}
-                  created={post.time} />
-              </li>
-            })}
-          </ul> */}
