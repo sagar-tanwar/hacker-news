@@ -1,6 +1,7 @@
 import React from 'react'
 import Post from './post'
 import { fetchTopStories } from '../utils/api'
+import Loading from './Loading'
 
 export default class TopPosts extends React.Component {
 
@@ -22,7 +23,7 @@ export default class TopPosts extends React.Component {
     return (
       <div className="container p-5">
         {posts === false
-          ? <div>Loading</div>
+          ? <Loading />
           : (
             <ul className='list-unstyled'>
               {posts.map((post) => (
