@@ -8,3 +8,29 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.list-unstyled {
+  list-style: none;
+}
+
+.link {
+  color: rgb(187, 46, 31);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.text-light {
+  color: #808080;
+}
+
+.text-light a {
+  color: #000;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.p-5 {
+  padding: 2rem;
+}

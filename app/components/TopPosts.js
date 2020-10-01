@@ -20,13 +20,13 @@ export default class TopPosts extends React.Component {
     const {posts} = this.state
 
     return (
-      <div className="container">
+      <div className="container p-5">
         {posts === false
           ? <div>Loading</div>
           : (
-            <ul>
+            <ul className='list-unstyled'>
               {posts.map((post) => (
-                <li key={post.id}>
+                <li className="mb-3" key={post.id}>
                   <Post 
                     id={post.id}
                     title={post.title}
