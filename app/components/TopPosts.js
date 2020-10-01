@@ -1,5 +1,5 @@
 import React from 'react'
-import Post from './post'
+import Posts from './Posts'
 import { fetchTopStories } from '../utils/api'
 import Loading from './Loading'
 
@@ -24,21 +24,7 @@ export default class TopPosts extends React.Component {
       <div className="container p-5">
         {posts === false
           ? <Loading />
-          : (
-            <ul className='list-unstyled'>
-              {posts.map((post) => (
-                <li className="mb-3" key={post.id}>
-                  <Post 
-                    id={post.id}
-                    title={post.title}
-                    author={post.by} 
-                    url={post.url}
-                    comments={post.kids ? post.kids.length : 0}
-                    created={post.time} />
-                </li>
-              ))}
-            </ul>
-          )
+          : <Posts posts={posts} />
         }
       </div>
     )
