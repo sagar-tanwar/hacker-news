@@ -23,6 +23,11 @@ export function fetchTopStories() {
       hydrateStories(data.slice(0, 50))
         .then((data) => data.filter((item) => item.type === 'story'))
     ))
-  
+}
 
+export function fetchNewStories() {
+  // Return Array of new stories IDs
+  return fetch('https://hacker-news.firebaseio.com/v0/newstories.json')
+    .then((res) => res.json())
+    .then((data) => hydrateStories(data.slice(0, 50)))
 }
