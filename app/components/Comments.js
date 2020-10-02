@@ -1,5 +1,6 @@
 import React from 'react'
 import {format} from 'date-fns'
+import PropTypes from 'prop-types'
 
 export default function Comments({comments}) {
   return (
@@ -12,4 +13,8 @@ export default function Comments({comments}) {
       ))}
     </ul>
   )
+}
+
+Comments.propTypes = {
+  comments: PropTypes.array.isRequired
 }

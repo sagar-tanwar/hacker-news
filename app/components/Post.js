@@ -11,8 +11,8 @@ export default class Post extends React.Component {
 
   componentDidMount() {
     fetchStory(24659282)
-      .then((story) => {
-        this.setState({post: story})
+      .then((post) => {
+        this.setState({post})
       })
   }
 
