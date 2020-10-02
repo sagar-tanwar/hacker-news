@@ -4,12 +4,13 @@ import './index.css'
 import TopPosts from './components/TopPosts'
 import NewPosts from './components/NewPosts'
 import Post from './components/Post'
+import User from './components/User'
 
 class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Post />
+        <User />
       </React.Fragment>
     )
   }

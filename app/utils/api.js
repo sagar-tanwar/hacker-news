@@ -39,3 +39,19 @@ export function fetchStory(id) {
       return story
     })
 }
+
+export function fetchUser(username) {
+  return fetch(` https://hacker-news.firebaseio.com/v0/user/${username}.json`)
+    .then((res) => res.json())
+    .then((user) => {
+      if(user.submitted) {
+        return hydrateItems(user.submitted)
+          .then((data) => ({
+            ...user,
+            submitted: data.filter((item) => item.type === 'story' && item.dead !== true)
+          }))
+      }
+      return user
+    })
+    .catch((er) => console.error(er))
+}
