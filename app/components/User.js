@@ -21,13 +21,13 @@ export default class User extends React.Component {
     if(user === null) return <Loading text='Fetching User' />
 
     return (
-      <div className='container p-5'>
+      <div className='container p-5 pt-0'>
         <h1>{user.id}</h1>
-        <p className='text-light pb-3'>joined <b>{format(new Date(user.created * 1000), 'M/d/yyyy, h:m a')}</b> has <b>{user.karma}</b> karma</p>
+        <p className='text-light'>joined <b>{format(new Date(user.created * 1000), 'M/d/yyyy, h:m a')}</b> has <b>{user.karma}</b> karma</p>
         {user.submitted
           ? (
             <React.Fragment>
-              <h2 className='pb-3'>Posts</h2>
+              <h2>Posts</h2>
               <Posts posts={user.submitted} />
             </React.Fragment>
           )

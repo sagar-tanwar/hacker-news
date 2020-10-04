@@ -21,7 +21,7 @@ export default class NewPosts extends React.Component {
     const {posts} = this.state
 
     return (
-      <div className="container p-5">
+      <div className="container p-5 pt-0">
         {posts === false
           ? <Loading />
           : <Posts posts={posts} />

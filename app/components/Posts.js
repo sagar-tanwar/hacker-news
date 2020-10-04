@@ -8,7 +8,7 @@ export default function Posts({posts}) {
       {posts.map((post) => (
         <li className="mb-3" key={post.id}>
           <a className="link" href={post.url ? post.url : post.id} >{post.title}</a>
-          <p className="text-light">by <a href="#0">{post.by}</a> on {format(new Date(post.time * 1000), 'MM/d/yyyy, h:m a')} with <a href="#0">{post.kids ? post.kids.length : 0}</a> comments</p>
+          <div className="text-light pt-1">by <a href="#0">{post.by}</a> on {format(new Date(post.time * 1000), 'MM/d/yyyy, h:m a')} with <a href="#0">{post.kids ? post.kids.length : 0}</a> comments</div>
         </li>
       ))}
     </ul>
