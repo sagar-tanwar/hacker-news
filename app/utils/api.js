@@ -32,7 +32,7 @@ export function fetchStory(id) {
     .then((story) => {
       if(story.kids) {
         return hydrateItems(story.kids)
-          .then((comments) => ({...story, kids: comments}))
+        .then((comments) => ({...story, kids: comments.filter((item) => item.deleted !== true)}))
       }
       return story
     })
