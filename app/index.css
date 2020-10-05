@@ -30,7 +30,7 @@ body {
 
 .text-light a { color: #000; }
 
-.dark .text-light a { color: #bebebe }
+.dark a { color: #bebebe }
 
 .bg-light { background: rgba(128, 128, 128, 0.1411764705882353); }
 

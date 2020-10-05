@@ -24,8 +24,9 @@ export default class User extends React.Component {
 
     return (
       <div className='container p-5 pt-0'>
-        <h1>{user.id}</h1>
-        <p className='text-light'>joined <b>{format(new Date(user.created * 1000), 'M/d/yyyy, h:m a')}</b> has <b>{user.karma}</b> karma</p>
+        <h1 className='mb-2'>{user.id}</h1>
+        <div className='text-light'>joined <b>{format(new Date(user.created * 1000), 'M/d/yyyy, h:m a')}</b> has <b>{user.karma}</b> karma</div>
+        <p dangerouslySetInnerHTML={{__html: user.about}} />
         {user.submitted
           ? (
             <React.Fragment>
