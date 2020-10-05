@@ -6,11 +6,9 @@ function fetchItem(id) {
 }
 
 function hydrateItems(items) {
-  return Promise.all(items.map((item, index) => {
-    if(index < 50) {
-      return fetchItem(item)
-        .then((data) => data)
-    }
+  return Promise.all(items.map((item) => {
+    return fetchItem(item)
+      .then((data) => data)
   }))
 }
 
@@ -45,7 +43,7 @@ export function fetchUser(username) {
     .then((res) => res.json())
     .then((user) => {
       if(user.submitted) {
-        return hydrateItems(user.submitted)
+        return hydrateItems(user.submitted.slice(0, 30))
           .then((data) => ({
             ...user,
             submitted: data.filter((item) => item.type === 'story' && item.dead !== true)

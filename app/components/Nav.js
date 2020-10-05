@@ -1,5 +1,6 @@
 import React from 'react'
 import {ThemeConsumer} from '../contexts/theme'
+import {NavLink} from 'react-router-dom'
 
 const Nav = () => {
   return (
@@ -7,8 +8,20 @@ const Nav = () => {
       {({theme, toggleTheme}) => (
         <div className='container p-5 space-between'>
           <nav>
-            <a href='#!'>Top</a>
-            <a href='#!'>New</a>
+            <NavLink 
+              to='/'
+              className='nav-link'
+              activeStyle={{color: 'rgb(187, 46, 31)'}} 
+              exact>
+              Top
+            </NavLink>
+            <NavLink 
+              to='/new'
+              className='nav-link'
+              activeStyle={{color: 'rgb(187, 46, 31)'}} 
+              >
+              New
+            </NavLink>
           </nav>
           <button 
             style={{fontSize: 30}}

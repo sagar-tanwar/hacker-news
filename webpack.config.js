@@ -11,12 +11,16 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new htmlWebpackPlugin({
       template: './app/index.html'
     })
   ],
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  devServer: {
+    historyApiFallback: true
+  }
 }

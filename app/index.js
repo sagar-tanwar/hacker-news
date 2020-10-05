@@ -7,6 +7,7 @@ import Post from './components/Post'
 import User from './components/User'
 import Nav from './components/Nav'
 import {ThemeProvider} from './contexts/theme'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends React.Component {
   state = {
@@ -20,12 +21,17 @@ class App extends React.Component {
   
   render() {
     return (
-      <ThemeProvider value={this.state}>
-        <div className={this.state.theme}>
-          <Nav />
-          <Post />
-        </div>
-      </ThemeProvider>
+      <Router>
+        <ThemeProvider value={this.state}>
+          <div className={this.state.theme}>
+            <Nav />
+            <Route path='/' exact component={TopPosts} />
+            <Route path='/new' component={NewPosts} />
+            <Route path='/user' component={User} />
+            <Route path='/post' component={Post} />
+          </div>
+        </ThemeProvider>
+      </Router>
     )
   }
 }

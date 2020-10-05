@@ -3,6 +3,7 @@ import {fetchUser} from '../utils/api'
 import Loading from './Loading'
 import {format} from 'date-fns'
 import Posts from './Posts'
+import queryString from 'query-string'
 
 export default class User extends React.Component {
   state ={
@@ -10,7 +11,8 @@ export default class User extends React.Component {
   }
 
   componentDidMount() {
-    fetchUser('krimeo')
+    const {id} = queryString.parse(this.props.location.search)
+    fetchUser(id)
       .then((user) => {
         this.setState({user})
       })
