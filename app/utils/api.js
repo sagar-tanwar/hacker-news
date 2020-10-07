@@ -1,30 +1,22 @@
 function fetchItem(id) {
   return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
     .then((res) => res.json())
-    .then((post) => post)
     .catch((er) => console.error(er))
 }
 
 function hydrateItems(items) {
-  return Promise.all(items.map((item) => {
-    return fetchItem(item)
-      .then((data) => data)
-  }))
+  return Promise.all(items.map(fetchItem))
 }
 
-export function fetchTopStories() {
-  return fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
+export function fetchMainStories(type) {
+  return fetch(`https://hacker-news.firebaseio.com/v0/${type}stories.json`)
     .then((res) => res.json())
-    .then((stories) => (
-      hydrateItems(stories.slice(0, 50))
-        .then((data) => data.filter((item) => item.type === 'story'))
-    ))
-}
-
-export function fetchNewStories() {
-  return fetch('https://hacker-news.firebaseio.com/v0/newstories.json')
-    .then((res) => res.json())
-    .then((stories) => hydrateItems(stories.slice(0, 50)))
+    .then((ids) => {
+      if(!ids) throw new Error('There was an error fetching the posts.json')
+      return ids.slice(0, 50)
+    })
+    .then((ids) => Promise.all(ids.map(fetchItem)))
+    .then((posts) => posts.filter(({type}) => type === 'story'))
 }
 
 export function fetchStory(id) {
