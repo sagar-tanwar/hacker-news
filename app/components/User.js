@@ -31,7 +31,11 @@ export default class User extends React.Component {
           ? (
             <React.Fragment>
               <h2>Posts</h2>
-              <Posts posts={user.submitted} />
+              {user.submitted.length
+                ? <Posts posts={user.submitted} />
+                : <p>This user hasn't posted yet</p>
+              }
+              
             </React.Fragment>
           )
           : null
